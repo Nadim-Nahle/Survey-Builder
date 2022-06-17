@@ -41,5 +41,16 @@ Route::group(['prefix' => 'v1'], function (){
             Route::get('/ans/{id?}', [AnswerController::class, 'getAns']);
         });
     });
+
+    //ADMIN GROUP
+    Route::group(['prefix' => 'admin'], function (){
+
+        Route::group(['middleware' => 'role.admin'], function(){
+
+            Route::post('/addsurvey', [AdminController::class, 'addSurvey']);
+            Route::post('/addquestion', [AdminController::class, 'addQuestion']);
+        });       
+      
+    });
      
 });
