@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,16 @@ Route::group(['prefix' => 'v1'], function (){
             Route::post('/logout', [AuthController::class, 'logout']);
             
         });
-    
     });
+
+        //FAVOURITES GROUP 
+    Route::group(['prefix' => 'ans'], function (){ 
+        
+        Route::group(['middleware' => 'role.user'], function(){
+
+            Route::post('/addans', [AnswerController::class, 'addAns']);
+            Route::get('/ans/{id?}', [AnswerController::class, 'getAns']);
+        });
+    });
+     
 });
