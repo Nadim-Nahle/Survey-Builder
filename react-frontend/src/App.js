@@ -4,7 +4,7 @@ import Survey from "./admin/Survey";
 function App() {
   return (
     <div className='flex'>
-      <Survey />
+      <Login />
     </div>
     
   );
