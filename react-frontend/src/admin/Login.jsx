@@ -30,9 +30,11 @@ const Login = () => {
         
         try{
             const response =await axios.post(LOGIN_URL, ({email, password})); 
-            console.log(JSON.stringify(response?.data.access_token));
+            //console.log(JSON.stringify(response?.data.access_token));
+            const jwt = (JSON.stringify(response?.data.access_token));
+            //console.log(jwt)
             //console.log(JSON.stringify(response));
-            setAuth({email, password})
+            setAuth({email, password, jwt})
             setEmail('');
             setPassword('');
             setSuccess(true);
