@@ -43,6 +43,8 @@ function Question(){
             //console.log(getToken);
             const status =(response?.data.status);
             console.log(status);
+            const questionId = (response?.data.id);
+            localStorage.setItem('questionId', questionId);
            
             
             //setAuth({title, description, questionId})
@@ -71,12 +73,12 @@ function Question(){
             <div className="survey">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <h1>Add question</h1>
-                <input type='text' placeholder="question" ref={userRef} onChange={(e) => setQuestion(e.target.value)} value={question_name}  />
+                <input type='text' placeholder="title" ref={userRef} onChange={(e) => setQuestion(e.target.value)} value={question_name}  />
                 <label>Choose a type from this list:</label>
                 <select list="types" name="myBrowser" >
-                    <option value="MCQ">fds</option>
-                    <option value="Text">dfs</option>
-                    <option value="True Or False">sds</option>
+                    <option value="MCQ">Text</option>
+                    <option value="Text">MCQ</option>
+                    <option value="True Or False">T/F</option>
                 </select>
                 <button>Submit</button>
                 

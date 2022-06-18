@@ -7,6 +7,7 @@ import Layout from "./Layout";
 import Home from "./Home";
 import RequireAuth from "./admin/RequireAuth";
 import Question from "./admin/Question";
+import Type from "./admin/type";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="admin/user" element ={<user />} />
         <Route path="/" element ={<Home />} />
         <Route path="admin/questions" element ={<Question />} />
+        <Route path="admin/type" element ={<Type />} />
         
         
         
