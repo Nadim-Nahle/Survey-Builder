@@ -1,7 +1,7 @@
 import './login.css';
 import {useRef, useState, useEffect, useContext } from 'react';
 import useAuth from "../hooks/useAuth";
-import {link ,useNavigate, useLocation } from 'react-router-dom'
+import {link ,useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../api/axios';
 const LOGIN_URL = '/api/v1/user/auth/login';
@@ -37,14 +37,15 @@ const Login = () => {
         
         try{
             const response =await axios.post(LOGIN_URL, ({email, password})); 
-            console.log(response?.data);
+            //console.log(response?.data);
             const jwt = ((response?.data.access_token));
             //console.log(jwt)
             //console.log(JSON.stringify(response));
             setAuth({email, password, jwt})
             setEmail('');
             setPassword('');
-            console.log(jwt)
+            localStorage.setItem('token', jwt);
+            //console.log(w);
             navigate(from, { replace: true });
 
 
@@ -71,7 +72,7 @@ const Login = () => {
     return(
         
             
-            
+        
         <div className='container'>
             <div className='center'>
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
@@ -79,11 +80,11 @@ const Login = () => {
                     <form onSubmit={handleSubmit}>
                         <div className='txt_field'>
                             <input type='email' id='email-login' className='form-control' name='email' ref={userRef} onChange={(e) => setEmail(e.target.value)} value={email} />
-                            <label for="email">Email</label>
+                            <label htmlFor="email">Email</label>
                         </div>
                         <div className='txt_field'>
                             <input type='password' id='password-login' className='form-control' name='password' onChange={(e) => setPassword(e.target.value)}  value={password}/>
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                         </div>
                         <div className='pass'>Forgot password ?</div>
                         <button>Login</button>
