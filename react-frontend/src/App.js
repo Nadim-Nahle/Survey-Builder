@@ -1,13 +1,13 @@
 import React from "react";
-import Login from "./Login";
-import Signup from "./signup";
+import Login from "./admin/Login";
+import Survey from "./admin/Survey";
 function App() {
   return (
     <div className='flex'>
-      <Login />
+      <Survey />
     </div>
     
   );
-}
+} 
 
 export default App;
