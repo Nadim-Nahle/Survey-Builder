@@ -1,19 +1,26 @@
 import './login.css';
 import {useRef, useState, useEffect, useContext } from 'react';
-import useAuth from '../hooks/useAuth'
+import useAuth from "../hooks/useAuth";
+import {link ,useNavigate, useLocation } from 'react-router-dom'
 
 import axios from '../api/axios';
 const LOGIN_URL = '/api/v1/user/auth/login';
 
 const Login = () => {
+
+
     const { setAuth} = useAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef();
     const errRef = useRef();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         userRef.current.focus();
@@ -30,14 +37,15 @@ const Login = () => {
         
         try{
             const response =await axios.post(LOGIN_URL, ({email, password})); 
-            //console.log(JSON.stringify(response?.data.access_token));
-            const jwt = (JSON.stringify(response?.data.access_token));
+            console.log(response?.data);
+            const jwt = ((response?.data.access_token));
             //console.log(jwt)
             //console.log(JSON.stringify(response));
             setAuth({email, password, jwt})
             setEmail('');
             setPassword('');
-            setSuccess(true);
+            console.log(jwt)
+            navigate(from, { replace: true });
 
 
 
@@ -61,16 +69,7 @@ const Login = () => {
     }
 
     return(
-        <>
-            {success ? (
-                <section>
-                    <h1>You are logged in!</h1>
-                    <br />
-                    <p>
-                        <a href="#">Go to Home</a>
-                    </p>
-                </section>
-            ):(
+        
             
             
         <div className='container'>
@@ -94,8 +93,8 @@ const Login = () => {
                      </form>
              </div>
         </div>
-        )}
-        </>
+        
+        
     )
 }
 export default Login
