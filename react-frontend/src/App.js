@@ -5,6 +5,7 @@ import {Routes, Route, Router} from 'react-router-dom';
 import Signup from "./admin/signup";
 import Layout from "./Layout";
 import Home from "./Home";
+import RequireAuth from "./admin/RequireAuth";
 
 
 function App() {
@@ -12,12 +13,15 @@ function App() {
       <Routes>
       <Route path="/" element ={<Layout />}>
         /* public routes */
-        <Route path="login" element ={<Login />} />
-        <Route path="aignup" element ={<Signup />} />
+        <Route path="admin/login" element ={<Login />} />
+        <Route path="admin/user" element ={<user />} />
+        <Route path="/" element ={<Home />} />
 
         /* protected routes */
-        <Route path="survey" element ={<Survey />} />
-        <Route path="/" element ={<Home />} />
+        <Route element={<RequireAuth />}>
+          <Route path="admin/survey" element ={<Survey />} />
+          
+        </Route>
 
         /* 404 roue */
 
