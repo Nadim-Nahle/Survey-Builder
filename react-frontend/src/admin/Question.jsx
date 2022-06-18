@@ -6,9 +6,9 @@ import {link ,useNavigate, useLocation } from 'react-router-dom';
 
 import axios from '../api/axios';
 import AuthContext from "../context/AuthProvider";
-const LOGIN_URL = '/api/v1/admin/addsurvey/';
+const LOGIN_URL = '/api/v1/admin/addquestion/';
 
-function Survey(){
+function Question(){
 
     const { setAuth} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -18,8 +18,7 @@ function Survey(){
     const userRef = useRef();
     const errRef = useRef();
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [question_name, setQuestion] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
@@ -29,35 +28,32 @@ function Survey(){
     
     useEffect(() => {
         setErrMsg('');
-    }, [title, description])
+    }, [question_name])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const survey_id = localStorage.getItem('surveyId');
+        console.log(survey_id);
         
         try{
-            const response =await axios.post(LOGIN_URL, ({title, description, }),
+            const response =await axios.post(LOGIN_URL, ({question_name, survey_id }),
             {
                 headers: {'Authorization': 'Bearer '+getToken}
             }); 
             //console.log(getToken);
             const status =(response?.data.status);
             console.log(status);
-            const surveyId = (response?.data.id);
-            const surveyTitle = (response?.data.title);
-            const surveyDesc = (response?.data.desc);
-            //console.log(surveyId)
-            localStorage.setItem('surveyTitle', surveyTitle);
-            localStorage.setItem('surveyDesc', surveyDesc);
-            localStorage.setItem('surveyId', surveyId);
-            setAuth({title, description, surveyId})
+           
+            
+            //setAuth({title, description, questionId})
             if (status == 'Success'){
-                setErrMsg('Survey Added');   
-                alert("Survey Added!!")
+                setErrMsg('question Added');   
+                alert("question Added!!")
             }
             
-            setTitle('');
-            setDescription('');
-            navigate('/admin/questions');
+            setQuestion('');
+            navigate('/admin/type');
+            
         }
         catch (err){
             
@@ -74,14 +70,20 @@ function Survey(){
         <form onSubmit={handleSubmit}>
             <div className="survey">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                <h1>Add Survey</h1>
-                <input type='text' placeholder="Title" ref={userRef} onChange={(e) => setTitle(e.target.value)} value={title}  />
-                <input type='text' placeholder="Description" ref={userRef} onChange={(e) => setDescription(e.target.value)} value={description}  />
+                <h1>Add question</h1>
+                <input type='text' placeholder="question" ref={userRef} onChange={(e) => setQuestion(e.target.value)} value={question_name}  />
+                <label>Choose a type from this list:</label>
+                <select list="types" name="myBrowser" >
+                    <option value="MCQ">fds</option>
+                    <option value="Text">dfs</option>
+                    <option value="True Or False">sds</option>
+                </select>
                 <button>Submit</button>
+                
             </div>
         </form>       
                    
     )
     
 }
-export default Survey
+export default Question

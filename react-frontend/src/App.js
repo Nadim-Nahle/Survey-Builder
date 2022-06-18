@@ -6,7 +6,7 @@ import Signup from "./admin/Signup";
 import Layout from "./Layout";
 import Home from "./Home";
 import RequireAuth from "./admin/RequireAuth";
-
+import Question from "./admin/Question";
 
 function App() {
   return (
@@ -17,12 +17,16 @@ function App() {
         <Route path="admin/signup" element ={<Signup />} />
         <Route path="admin/user" element ={<user />} />
         <Route path="/" element ={<Home />} />
+        <Route path="admin/questions" element ={<Question />} />
+        
         
         
 
         /* protected routes */
         <Route element={<RequireAuth />}>
         <Route path="admin/survey" element ={<Survey />} />
+        
+        
         
           
           
