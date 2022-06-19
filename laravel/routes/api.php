@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,13 @@ Route::group(['prefix' => 'v1'], function (){
         });       
       
     });
+
+    //No Authorization
+
+    
+
+});       
+      
+    
      
-});
+

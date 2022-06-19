@@ -26,10 +26,11 @@ class AnswerController extends Controller
 
     public function getAnswers(Request $request){
         $question_id=$request->question_id;
-        $answers= Answer::where("question_id", $question_id)->get();
+        $answers= Answer::all()->where("question_id", $question_id);
         return response()->json([
             "status"=>"Success",
-            "answers"=>$answers
+            "answers"=>$answers,
+            "answersr"=>$question_id
         ],200);
     }
     

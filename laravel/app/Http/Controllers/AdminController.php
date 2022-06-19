@@ -55,4 +55,6 @@ class AdminController extends Controller
             "id"=> $type->id,
             ], 200);
      }
+
+     
 }
