@@ -14,9 +14,10 @@ function SurveyName(){
     },[])
 
     const arr = data.map((data, index) => {
-        console.log(data.question_name)
+        //console.log(data.question_name)
+       // console.log(data.id)
         return (
-            <button>{data.question_name}</button>
+            <button value='{data.id}'>{data.question_name}</button>
             
         )
     })

@@ -10,6 +10,7 @@ import Question from "./admin/Question";
 import Type from "./admin/type";
 import Answer from "./User";
 import SurveyName from "./surveyname";
+import SurveyInfo from "./User";
 
 function App() {
   return (
@@ -20,10 +21,9 @@ function App() {
         <Route path="admin/signup" element ={<Signup />} />
         <Route path="admin/user" element ={<user />} />
         <Route path="/" element ={<Home />} />
-        <Route path="/User" element ={<Answer />} />
+        <Route path="/User" element ={<SurveyInfo />} />
         <Route path="/survey" element ={<SurveyName />} />
-        <Route path="admin/questions" element ={<Question />} />
-        <Route path="admin/type" element ={<Type />} />
+        
         
         
         
@@ -31,6 +31,8 @@ function App() {
         /* protected routes */
         <Route element={<RequireAuth />}>
         <Route path="admin/survey" element ={<Survey />} />
+        <Route path="admin/questions" element ={<Question />} />
+        <Route path="admin/type" element ={<Type />} />
         
         
         

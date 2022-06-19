@@ -1,32 +1,41 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import axios from "./api/axios";
 
-function Answer(){
-
-    useEffect(() => {
-        //
-    } ,[])
-
+function SurveyInfo(){
     
+    const[data, setData] = useState([])
+
+    useEffect(() =>{
+        axios.get('http://127.0.0.1:8000/api/v1/survey')
+        .then(res => {
+            
+            setData(res.data.survey)
+        })
+    },[])
+
+    const arr = data.map((data, index) => {
+        //console.log(data.question_name)
+        console.log(data)
+        return (
+            
+            <h1>questions</h1>
+            
+        )
+    })
+    
+
     return(
 
-        <form >
-            <div className="survey">
-                <h1>write your answers</h1>
-                <label>Question 1</label>
-                <input type='text' placeholder="Answer 1"   />
-                <label>Question 2</label>
-                <input type='text' placeholder="Answer 2"   />
-                <label>Question 3</label>
-                <input type='text' placeholder="Answer 3"   />
-                
-                <button>Submit</button>
-            </div>
-        </form>
+        <div className="hello">
+            <h1>Answer the questions</h1>
+            
+            {arr}
+            
+        </div>
 
     )
 
 }
 
-export default Answer;
+export default SurveyInfo;
