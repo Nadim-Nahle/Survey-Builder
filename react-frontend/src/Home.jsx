@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <div className="centre">
             <h1>Home</h1>
-            <Link to="./admin/user">Take a survey</Link>
+            <Link to="/user">Take a survey</Link>
             <br />
             <br />
             <Link to="/admin/login">Go to the Login Page</Link>

@@ -50,7 +50,7 @@ function Question(){
             //setAuth({title, description, questionId})
             if (status == 'Success'){
                 setErrMsg('question Added');   
-                alert("question Added!!")
+                alert("survey Title Added!!")
             }
             
             setQuestion('');
@@ -72,7 +72,7 @@ function Question(){
         <form onSubmit={handleSubmit}>
             <div className="survey">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                <h1>Add question</h1>
+                <h1>Add Survey Title</h1>
                 <input type='text' placeholder="title" ref={userRef} onChange={(e) => setQuestion(e.target.value)} value={question_name}  />
                 <label>Choose a type from this list:</label>
                 <select list="types" name="myBrowser" >
