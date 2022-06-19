@@ -1,7 +1,14 @@
 import React from "react";
-
+import { useEffect } from "react";
+import axios from "./api/axios";
 
 function Answer(){
+
+    useEffect(() => {
+        //
+    } ,[])
+
+    
     return(
 
         <form >

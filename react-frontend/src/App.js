@@ -9,6 +9,7 @@ import RequireAuth from "./admin/RequireAuth";
 import Question from "./admin/Question";
 import Type from "./admin/type";
 import Answer from "./User";
+import SurveyName from "./surveyname";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="admin/user" element ={<user />} />
         <Route path="/" element ={<Home />} />
         <Route path="/User" element ={<Answer />} />
+        <Route path="/survey" element ={<SurveyName />} />
         <Route path="admin/questions" element ={<Question />} />
         <Route path="admin/type" element ={<Type />} />
         
