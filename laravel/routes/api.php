@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,7 @@ Route::group(['prefix' => 'v1'], function (){
     //No Authorization
 
     Route::get('/survey', [TypeController::class, 'getSurvey']);
+    Route::get('/question', [QuestionController::class, 'getQuestion']);
 
 });       
       
