@@ -59,7 +59,7 @@ Route::group(['prefix' => 'v1'], function (){
 
     //No Authorization
 
-    
+    Route::get('/survey', [TypeController::class, 'getSurvey']);
 
 });       
       
