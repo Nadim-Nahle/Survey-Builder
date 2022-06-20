@@ -1,9 +1,11 @@
 import React from "react";
 import { useEffect,useState } from "react";
 import axios from "./api/axios";
+import Home from "./Home";
 
 function SurveyName(){
     const[data, setData] = useState([])
+    const[isToggled, setIsToggled] = useState(false);
 
     useEffect(() =>{
         axios.get('http://127.0.0.1:8000/api/v1/question')
@@ -17,7 +19,9 @@ function SurveyName(){
         //console.log(data.question_name)
        // console.log(data.id)
         return (
-            <button value='{data.id}'>{data.question_name}</button>
+
+            <button onClick={() => setIsToggled(!isToggled)}>{data.question_name}</button>
+            
             
         )
     })
@@ -31,6 +35,7 @@ function SurveyName(){
         </div>
 
     )
+    { isToggled && <Home />} 
 
 }
 
