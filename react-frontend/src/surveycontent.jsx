@@ -1,5 +1,5 @@
 import React from "react";
-
+import './surveycontent.css';
 
 function SurveyContent(){
    
@@ -8,7 +8,7 @@ function SurveyContent(){
     return(
 
         <>
-  <h1>GeeksforGeeks Survey Form</h1>
+  <h1> Survey Form</h1>
   {/* Create Form */}
   <form id="form">
     {/* Details */}
