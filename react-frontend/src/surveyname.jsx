@@ -19,11 +19,14 @@ function SurveyName(){
         //console.log(data.question_name)
        // console.log(data.id)
         return (
-
+            <>
             <button onClick={() => setIsToggled(!isToggled)}>{data.question_name}</button>
+            { isToggled && <Home />} 
+            </>
             
             
         )
+       
     })
 
     return(
@@ -35,7 +38,7 @@ function SurveyName(){
         </div>
 
     )
-    { isToggled && <Home />} 
+    
 
 }
 
