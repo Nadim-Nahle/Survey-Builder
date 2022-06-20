@@ -22,7 +22,7 @@ function SurveyName(){
         return (
             <>
             <button onClick={() => setIsToggled(!isToggled)}>{data.question_name}</button>
-            { isToggled && } 
+            { isToggled && <SurveyContent />} 
             </>
             
             
