@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect,useState } from "react";
 import axios from "./api/axios";
 import Home from "./Home";
+import SurveyContent from "./surveycontent";
 
 function SurveyName(){
     const[data, setData] = useState([])
@@ -21,7 +22,7 @@ function SurveyName(){
         return (
             <>
             <button onClick={() => setIsToggled(!isToggled)}>{data.question_name}</button>
-            { isToggled && <Home />} 
+            { isToggled && } 
             </>
             
             
